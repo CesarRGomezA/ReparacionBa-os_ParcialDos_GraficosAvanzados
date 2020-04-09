@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>@yield('titulo')</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    @yield('estilos')
 </head>
 
 <body id="page-top">
@@ -20,8 +21,10 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href= ><i class="fas fa-bath"></i><span>Trabajos</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href=""><i class="fas fa-toilet-paper"></i><span>Agregar Trabajo</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{{route('admin.index')}}"><i class="fas fa-bath"></i><span>Trabajos</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('trabajo.create')}}"><i class="fas fa-toilet-paper"></i><span>Agregar Trabajo</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('usuarios.index')}}"><i class="fas fa-user-friends"></i><span>Usuarios</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('usuarios.create')}}"><i class="fas fa-child"></i><span>Crear Usuario</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -46,88 +49,10 @@
                     </ul>
             </div>
             </nav>
-            <div class="container-fluid">
-                <h3 class="text-dark mb-4">Team</h3>
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Employee Info</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
-                            </div>
-                        </div>
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table dataTable my-0" id="dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>Tipo Trabajo</th>
-                                        <th>Problema</th>
-                                        <th>Material</th>
-                                        <th>Estado</th>
-                                        <th>Fecha y Hora</th>
-                                        <th>Lugar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($banos as $bano)
-                                    <tr>
-                                        <td>{{$bano->tipo_trabajo}}</td>
-                                        <td>{{$bano->des_problema}}</td>
-                                        <td>{{$bano->material}}</td>
-                                        <td>{{$bano->estado}}<br></td>
-                                        <td>{{$bano->fecha_hora}}</td>
-                                        <td>{{$bano->lugar}}</td>
-                                        <td>
-                                        <!-- Show -->
-                                        <a href="{{ route('trabajo.show', $bano -> id) }}" class="btn btn-primary">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                         <!-- Edit -->
-                                         <a href="{{ route('trabajo.edit', $bano -> id) }}" class="btn btn-success">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                            
-                                        
-                                    </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><strong>Tipo Trabajo</strong></td>
-                                        <td><strong>Problema</strong></td>
-                                        <td><strong>Material</strong></td>
-                                        <td><strong>Estado</strong></td>
-                                        <td><strong>Fecha y Hora</strong></td>
-                                        <td><strong>Lugar</strong></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                            </div>
-                            <div class="col-md-6">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
+
+    @yield('contenido')
+
     <footer class="bg-white sticky-footer">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © CZAR2020</span></div>
@@ -154,8 +79,7 @@
     $("#linkLogout").click(doClickLinkLogout);
     });
     </script>
-
-@yield('scripts')
+    @yield('scripts')
 
 
 </body>

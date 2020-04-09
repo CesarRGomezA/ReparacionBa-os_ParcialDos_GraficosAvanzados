@@ -41,12 +41,9 @@
                                 <tbody>
                                   
                                     <tr>
-                                        <td>{{$trabajos->tipo_trabajo}}</td>
-                                        <td>{{$trabajos->des_problema}}</td>
-                                        <td>{{$trabajos->material}}</td>
-                                        <td>{{$trabajos->estado}}<br></td>
-                                        <td>{{$trabajos->fecha_hora}}</td>
-                                        <td>{{$trabajos->lugar}}</td>
+                                        <td>{{$usuarios->name}}</td>
+                                        <td>{{$usuarios->email}}</td>
+                                        <td>{{$usuarios->tipo_usuario}}</td>
                                     </tr>
                                 
                                 </tbody>

@@ -24,7 +24,7 @@ class BanosController extends Controller
         $bano = Banos::all();
         $argumentos = array();
         $argumentos['banos'] = $bano;
-        return view('layouts.admin.inicio',$argumentos);
+        return view('admin.index',$argumentos);
     }
 
     /**
@@ -54,7 +54,7 @@ class BanosController extends Controller
         if($request->hasFile('resultado')) {
             $archivoPortada = $request->file('resultado');
             $rutaArchivo = $archivoPortada->store("public/assets/img/resultados");
-            $rutaArchivo = substr($rutaArchivo,19);
+            $rutaArchivo = substr($rutaArchivo,30);
 
             $nuevoBano->resultado = $rutaArchivo;
         }
@@ -64,13 +64,13 @@ class BanosController extends Controller
         if($nuevoBano->save()) {
             //Si pude guardar la noticia
             return redirect()->
-                route('admin.inicio')->
+                route('admin.index')->
                 with('exito',
                 'La noticia fue guardada correctamente');
         }
         //Aquí no se pudo guardar
         return redirect()->
-            route('admin.inicio')->
+            route('admin.index')->
             with('error',
             'No se pudo agregar al noticia');
     }
@@ -157,7 +157,7 @@ class BanosController extends Controller
                     'No se pudo actualizar el trabajo');
         }
         return redirect()->
-            route('trabajo.inicio')->
+            route('trabajo.index')->
             with('error',
                 'No se encontró la noticia');
     }
@@ -170,6 +170,19 @@ class BanosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bano = Banos::find($id);
+        if ($bano) {
+            if($bano->delete()) {
+                return redirect()->
+                        route('admin.index')->
+                        with('exito','Trabajo eliminado exitosamente');
+            }
+            return redirect()->
+                    route('admin.index')->
+                    with('error','No se pudo eliminar el trabajo');
+        }
+        return redirect()->
+                route('admin.index')->
+                with('error','No se encotró el trabajo');
     }
 }
