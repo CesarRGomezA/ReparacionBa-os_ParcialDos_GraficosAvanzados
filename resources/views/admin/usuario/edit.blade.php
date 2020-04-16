@@ -28,8 +28,22 @@
                                 name="name" value="{{$usuarios->name}}" class="form-control"/>
                     </div>
                     <div class="form-group">
-                            <label>Tipo Usuario</label>
-                            <input type="text" name="tipo_usuario" value="{{$usuarios->tipo_usuario}}" class="form-control"/>
+                    <div class="form-group">
+                    <label>
+                        Tipo de Usuario
+                    </label>
+
+                    <select name="tipo_usuario" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                        <option value="{{ $usuarios -> tipo_usuario }}" class="dropdown-item" role="presentation">{{ $usuarios -> tipo_usuario }}</option>
+
+                        @if($usuarios->tipo_usuario == "Administrador")
+                        <option value="Usuario" class="dropdown-item" role="presentation">Usuario</option>
+                        @else
+                        <option value="Administrador" class="dropdown-item" role="presentation">Administrador</option>
+                        @endif
+
+                    </select>
+                </div>
                     </div>
                     <div class="form-group">
                             <label>Contraseña</label>

@@ -39,9 +39,16 @@
                             <input type="file" name="resultado" class="form-control"/>
                     </div>
                     <div class="form-group">
-                            <label>Estado</label>
-                            <input type="text" 
-                                name="estado" class="form-control"/>
+                    <label>
+                        Estado
+                    </label>
+
+                    <select name="estado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                        <option value="Pendiente" class="dropdown-item" role="presentation">Pendiente</option>
+                        <option value="En reparacion" class="dropdown-item" role="presentation">En reparacion</option>
+                        <option value="Terminado" class="dropdown-item" role="presentation">Terminado</option>
+                    </select>        
+
                     </div>
                     <div class="form-group">
                             <label>Fecha(AÑO, MES, DIA)</label>

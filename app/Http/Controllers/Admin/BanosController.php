@@ -54,7 +54,7 @@ class BanosController extends Controller
         if($request->hasFile('resultado')) {
             $archivoPortada = $request->file('resultado');
             $rutaArchivo = $archivoPortada->store("public/assets/img/resultados");
-            $rutaArchivo = substr($rutaArchivo,30);
+            $rutaArchivo = substr($rutaArchivo,29);
 
             $nuevoBano->resultado = $rutaArchivo;
         }
@@ -127,17 +127,12 @@ class BanosController extends Controller
 
             if($request->hasFile('resultado')) {
 
-                Storage::delete('public/assets/img/resultados' . $bano->resultado);
+               
 
                 $archivoPortada = $request->file('resultado');
-                $archivoPortada->store('resultado');
-
-                $extension = explode('.', $archivoPortada->getClientOriginalName());
-                $extension = $textoArchivoSeparado[count($textoArchivoSeparado) -1];
-
-                $rutaArchivo = Storage::putFileAs('public/assets/img/resultados', $archivoPortada, $bano->id . time() ."portada." .$extension);
+                $rutaArchivo = $archivoPortada->store('public/assets/img/resultados');
                 
-                $rutaArchivo = substr($rutaArchivo,19);
+                $rutaArchivo = substr($rutaArchivo,29);
         
                 $bano->resultado = $rutaArchivo;   
             }

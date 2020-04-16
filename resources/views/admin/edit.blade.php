@@ -37,15 +37,20 @@
                     </div>
                     @if($trabajos->resultado)
                             <a href="/storage/imgPortadas/{{$trabajos->resultado}}" target="_blank">
-                            <img style="widht: 50px; height: auto;" src="/storage/imgResultados/{{$trabajos->resultado}}" />
+                            <img src="/storage/assets/img/resultados/{{$trabajos->resultado}}" alt="">
                             </a>
                         @else
                             <p>No hay imagen cargada</p>
                         @endif
                     <div class="form-group">
                             <label>Estado</label>
-                            <input type="text" 
-                                name="estado" value="{{$trabajos->estado}}" class="form-control"/>
+
+                            <select name="estado" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                                <option value="{{ $trabajos -> estado }}" class="dropdown-item" role="presentation">{{ $trabajos -> estado }}</option>
+                                <option value="Pendiente" class="dropdown-item" role="presentation">Pendiente</option>
+                                <option value="En reparacion" class="dropdown-item" role="presentation">En reparacion</option>
+                                <option value="Terminado" class="dropdown-item" role="presentation">Terminado</option>
+                            </select>
                     </div>
                     <div class="form-group">
                             <label>Fecha</label>

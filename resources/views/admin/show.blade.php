@@ -30,7 +30,7 @@
                             <table class="table dataTable my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Tipo TRABAJO</th>
+                                        <th>Tipo Trabajo</th>
                                         <th>Problema</th>
                                         <th>Material</th>
                                         <th>Estado</th>
@@ -61,6 +61,9 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            <label>Resultado del trabajo</label>
+                            <br>
+                            <img src="/storage/assets/img/resultados/{{$trabajos->resultado}}" alt="">
                         </div>
                     </div>
                 </div>

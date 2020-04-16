@@ -28,9 +28,15 @@
                                 name="name" class="form-control"/>
                     </div>
                     <div class="form-group">
-                            <label>Tipo Usuario</label>
-                            <input type="text" name="tipo_usuario" class="form-control"/>
+                            <label>Tipo Usuario </label>
+                            <div class="form-group">
+                    <select name="tipo_usuario" class="form-control" data-toggle="dropdown" aria-expanded="false">
+                        <option value="Administrador" class="dropdown-item" role="presentation">Administrador</option>
+                        <option value="Usuario" class="dropdown-item" role="presentation">Usuario</option>
+                    </select>
                     </div>
+                    </div>
+
                     <div class="form-group">
                             <label>Contraseña</label>
                             <input type="text" 

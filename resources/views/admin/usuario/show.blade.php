@@ -30,12 +30,9 @@
                             <table class="table dataTable my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Tipo TRABAJO</th>
-                                        <th>Problema</th>
-                                        <th>Material</th>
-                                        <th>Estado</th>
-                                        <th>Fecha y Hora</th>
-                                        <th>Lugar</th>
+                                        <td><strong>Nombre</strong></td>
+                                        <td><strong>Correo</strong></td>
+                                        <td><strong>Tipo de usuario</strong></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,12 +46,9 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><strong>Tipo Trabajo</strong></td>
-                                        <td><strong>Problema</strong></td>
-                                        <td><strong>Material</strong></td>
-                                        <td><strong>Estado</strong></td>
-                                        <td><strong>Fecha y Hora</strong></td>
-                                        <td><strong>Lugar</strong></td>
+                                        <td><strong>Nombre</strong></td>
+                                        <td><strong>Correo</strong></td>
+                                        <td><strong>Tipo de usuario</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
