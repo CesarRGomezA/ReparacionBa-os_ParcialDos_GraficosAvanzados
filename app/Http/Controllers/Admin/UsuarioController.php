@@ -19,9 +19,16 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuario = Usuario::all();
+        $criterio = $request->input('criterio');
+        $usuario = array();
+        if($criterio) {
+            $usuario = Usuario::where('tipo_usuario', 'LIKE', '%'.$criterio.'%')->get();
+        }
+        else {
+            $usuario = Usuario::all();
+        }
         $argumentos = array();
         $argumentos['usuarios'] = $usuario;
         return view('admin.usuario.index',$argumentos);

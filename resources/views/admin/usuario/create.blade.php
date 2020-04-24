@@ -36,7 +36,6 @@
                     </select>
                     </div>
                     </div>
-
                     <div class="form-group">
                             <label>Contraseña</label>
                             <input type="text" 

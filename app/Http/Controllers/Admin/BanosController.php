@@ -19,9 +19,35 @@ class BanosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bano = Banos::all();
+        $criterio = $request->input('criterio');
+        $bano = array();
+        if($criterio) {
+            $bano = Banos::where('estado', 'LIKE', '%'.$criterio.'%')->get();
+        }
+        else {
+            $bano = Banos::all();
+        }
+
+        $fecha = $request->input('fecha');
+        $bano = array();
+        if($fecha) {
+            $bano = Banos::where('fecha_hora', 'LIKE', '%'.$fecha.'%')->get();
+        }
+        else {
+            $bano = Banos::all();
+        }
+
+        $tarea = $request->input('tarea');
+        $bano = array();
+        if($tarea) {
+            $bano = Banos::where('tipo_trabajo', 'LIKE', '%'.$tarea.'%')->get();
+        }
+        else {
+            $bano = Banos::all();
+        }
+        
         $argumentos = array();
         $argumentos['banos'] = $bano;
         return view('admin.index',$argumentos);
