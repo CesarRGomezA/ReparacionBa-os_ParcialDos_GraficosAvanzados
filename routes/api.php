@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 // API Resources
 Route::apiResource('banos', 'BanosApiController');
 
+
 // API Searches
 Route::get('banosfiltrados', 'BanosApiController@search');
 

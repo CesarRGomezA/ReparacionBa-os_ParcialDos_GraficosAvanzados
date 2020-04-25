@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Banos;
 use Illuminate\Http\Request;
+use App\User;
+use App\Usuario;
 
 class BanosApiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,16 +25,19 @@ class BanosApiController extends Controller
         return $banos;
     }
 
+    /**
+     * Display a list of items depending on the search criteria.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function search(Request $request)
     {
-        // Search terms
         $filter = $request -> input('filtro');
         $search = $request -> input('fecha');
 
-        // Retrieval of the data according to the search terms
         if($filter == "pendientes" || $filter == "Pendientes" || $filter == "pendiente" || $filter == "Pendiente")
         {
-            $instalaciones = Instalacion::where([
+            $banos = Banos::where([
                 ['id_user','=', $request->user()->id],
                 ['estado','=', 'Pendiente'],
                 ['fecha_hora', 'LIKE',  '%' . $search . '%']
@@ -36,22 +45,29 @@ class BanosApiController extends Controller
         }
         else if($filter == "terminadas" || $filter == "Terminadas" || $filter == "terminado" || $filter == "Terminado")
         {
-            $instalaciones = Instalacion::where([
+            $banos = Banos::where([
                 ['id_user','=', $request->user()->id],
                 ['estado','=', 'Terminado'],
                 ['fecha_hora', 'LIKE',  '%' . $search . '%']
                 ])->get();
-        } else 
-        {
-            return "No se encontró ningun registro";
+        } else if($filter == ""){
+            $banos = Banos::where([
+                ['id_user','=', $request->user()->id],
+                ['fecha_hora', 'LIKE',  '%' . $search . '%']
+                ])->get();
         }
-        
+        else
+        {
+            return "No se filtraron registros ";
+        }
+
         // Construcción del JSON de respuesta
         $respuesta = array();
-        $respuesta['instalaciones'] = $instalaciones;
-        
+        $respuesta['baños'] = $banos;
+
         return $respuesta;
     }
+
 
     /**
      * Store a newly created resource in storage.
