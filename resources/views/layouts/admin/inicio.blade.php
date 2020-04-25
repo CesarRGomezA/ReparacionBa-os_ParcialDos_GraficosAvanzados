@@ -23,8 +23,10 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="{{route('admin.index')}}"><i class="fas fa-bath"></i><span>Trabajos</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('trabajo.create')}}"><i class="fas fa-toilet-paper"></i><span>Agregar Trabajo</span></a></li>
+                    @if(Auth::user()->id_tipo_usuario == 1)
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('usuarios.index')}}"><i class="fas fa-user-friends"></i><span>Usuarios</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('usuarios.create')}}"><i class="fas fa-child"></i><span>Crear Usuario</span></a></li>
+                    @endif
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>

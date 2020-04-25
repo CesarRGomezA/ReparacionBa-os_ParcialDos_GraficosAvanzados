@@ -19,3 +19,7 @@ Route::apiResource('banos', 'BanosApiController');
 
 // API Searches
 Route::get('banosfiltrados', 'BanosApiController@search');
+
+Route::middleware('auth:api','trabajadorapi')->get('/servicio', function (Request $request) { return ['mensaje' => 'Hola Trabajador'];});
+
+Route::get('/solotrabajadores', function() {return ["mensaje" => "Esta ruta no existe metiche"];})->name('api.solotrabajadores');
